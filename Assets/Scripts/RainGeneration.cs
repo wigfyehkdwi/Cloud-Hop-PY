@@ -9,14 +9,15 @@ public class RainGeneration : MonoBehaviour
 
     int x;
     Vector3 offset;
-    int timer;
+    float timer;
     
     void Update()
     {
-        timer += 1;
+        float deltaTime = Time.deltaTime / Time.timeScale;
+        timer += deltaTime;
 
-        //if timer = 60, instantiate a raindrop at a random x value on screen
-        if(timer == 60){
+        //if timer >= 1, instantiate a raindrop at a random x value on screen
+        if(timer >= 1){
             x = Random.Range(6, -6);
             offset = new Vector3 (x, 0, 0);
 
